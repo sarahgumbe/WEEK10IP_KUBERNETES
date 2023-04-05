@@ -10,6 +10,8 @@ services:
       - /app/node_modules
     depends_on:
       - backend
+    networks:
+      - my-network
 
   backend:
     build: ./backend
@@ -19,3 +21,9 @@ services:
       - ./backend:/app
       - ./backend/.env:/app/.env
       - /app/node_modules
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
