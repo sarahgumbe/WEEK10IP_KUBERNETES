@@ -1,17 +1,20 @@
-# Build stage
-FROM node:14-alpine as build-stage
-WORKDIR /app
-COPY package*.json ./
-RUN npm install --only=production && npm cache clean --force
-RUN npm install react-scripts
-COPY . .
-RUN npm run build && rm -rf node_modules && npm install --only=production --no-audit && npm cache clean --force
+# Use an official Node.js runtime as a parent image
+FROM node:18-alpine
 
-# Production stage
-FROM node:14-alpine3.14 as production-stage
+# Set the working directory to /app
 WORKDIR /app
-COPY --from=build-stage /app/build ./build
+
+# Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
-RUN npm install --only=production --no-audit && npm cache clean --force
+
+# Install app dependencies
+RUN npm install
+
+# Copy the rest of the application code to the working directory
+COPY . .
+
+# Expose the port on which the app will run
 EXPOSE 3000
+
+# Start the React app
 CMD ["npm", "start"]

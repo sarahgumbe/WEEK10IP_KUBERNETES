@@ -2,7 +2,10 @@ version: '3.9'
 
 services:
   client:
-    build: ./client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    image: yolo-client:1.1.0
     ports:
       - "3000:3000"
     volumes:
@@ -14,7 +17,10 @@ services:
       - my-network
 
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: yolo-backend:1.2.0
     ports:
       - "5000:5000"
     volumes:
@@ -27,4 +33,3 @@ services:
 networks:
   my-network:
     driver: bridge
-    
