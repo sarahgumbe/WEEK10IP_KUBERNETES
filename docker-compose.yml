@@ -15,6 +15,7 @@ services:
       - backend
     networks:
       - my-network
+    mem_limit: 512m # increase memory limit to 512mb
 
   backend:
     build:
