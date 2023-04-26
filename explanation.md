@@ -6,11 +6,9 @@ Used node:14-alpine as the base image, alpine is a variant of Node.js that is us
 
 //Client Container
 
-Used a multi-stage build to separate the build environment from the production environment, allowed me to avoid including unnecessary build tools and files in the final image hence reducing the size of the image.
 
-Used node:14-alpine at the build stage ,as the base image, alpine is a variant of Node.js that is used in minimizing image size.
+Used node:18-alpine at the build stage ,as the base image, alpine is a variant of Node.js that is used in minimizing image size.
 
-Used node:14-alpine3.14 at the production stage ,as the base image, alpine is a variant of Node.js that is used in minimizing image size.
 
 #	Dockerfile directives used in the creation and running of each container.
 
@@ -76,14 +74,14 @@ In Docker Compose, the networks directive is used to define networks for contain
 
 #	Successful running of the applications and if not, debugging measures applied.
 
-The application runs successfully,yolo-backend-1,server listens on port 5000 and Database connected successfully
+The application runs successfully,yolo-backend:1.2.0,server listens on port 5000 and Database connected successfully
 
-yolo-client-1.compiled succesfully and app can be viewed on the local host http://localhost:3000
+yolo-client:1.1.0 compiled succesfully and app can be viewed on the local host http://localhost:3000
 
 #	Good practices such as Docker image tag naming standards for ease of identification of images and containers. 
 
 Both images have been tagged as
 
-- ddf6d9125f8c75c5e9a8ba80cedf9368f5f9aa8c87586a366d82ac8f5d498e4e :my-backend-image
+-yolo-client:1.1.0
 
-- d491538a085f33b6b54e06d8a5bc6c335ba49f4bf0acb666c4b044509319a513 :my-client-image
+-yolo-backend:1.2.0
