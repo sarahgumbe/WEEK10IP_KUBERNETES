@@ -9,7 +9,7 @@ const upload = multer();
 const productRoute = require('./routes/api/productRoute');
 
 // Connecting to the Database
-let mongodb_url = process.env.MONGODB_URI;
+const mongodb_url = process.env.MONGODB_URI;
 
 // define a url to connect to the database
 mongoose.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
