@@ -23,6 +23,13 @@ spec:
                   key: NODE_ENV
           ports:
             - containerPort: 5000
+          volumeMounts:
+            - name: backend-data
+              mountPath: /data
+      volumes:
+        - name: backend-data
+          persistentVolumeClaim:
+            claimName: backend-pvc
 ---
 apiVersion: v1
 kind: Secret
